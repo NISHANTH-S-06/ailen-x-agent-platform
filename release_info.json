@@ -1,0 +1,9 @@
+{
+  "name": "AGENT ALINE X",
+  "version": "v3.1",
+  "release_stage": "P7 Final QA",
+  "status": "release_candidate",
+  "completed_phases": ["P0", "P1", "P2", "P3", "P4", "P5", "P5.1", "P5.2", "P6", "P6.1"],
+  "backend_port": 8100,
+  "frontend_port": 3100
+}

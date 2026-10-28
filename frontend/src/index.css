@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #0B1020;
+  --color-surface1: #111827;
+  --color-surface2: #172033;
+  --color-panel: #0F172A;
+  --color-border: #263449;
+  --color-primary: #22D3EE;
+  --color-secondary: #8B5CF6;
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
+  --color-text-primary: #E5E7EB;
+  --color-text-secondary: #94A3B8;
+  --color-text-muted: #64748B;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    font-family: 'Outfit', 'Inter', "Segoe UI", system-ui, sans-serif;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  ::selection {
+    background: rgba(34, 211, 238, 0.25);
+    color: #ffffff;
+  }
+}
+
+@layer utilities {
+  /* Class overrides for Tailwind compiling mapping to our theme variables */
+  .bg-shell { background-color: var(--color-bg) !important; }
+  .bg-rail { background-color: var(--color-surface1) !important; }
+  .bg-panel { background-color: var(--color-panel) !important; }
+  .bg-panel2 { background-color: var(--color-surface2) !important; }
+  .border-line { border-color: var(--color-border) !important; }
+
+  .text-agent { color: var(--color-primary) !important; }
+  .bg-agent { background-color: var(--color-primary) !important; }
+  .border-agent { border-color: var(--color-primary) !important; }
+
+  .text-iris { color: var(--color-secondary) !important; }
+  .bg-iris { background-color: var(--color-secondary) !important; }
+  .border-iris { border-color: var(--color-secondary) !important; }
+
+  .text-mint { color: var(--color-success) !important; }
+  .bg-mint { background-color: var(--color-success) !important; }
+  .border-mint { border-color: var(--color-success) !important; }
+
+  .text-honey { color: var(--color-warning) !important; }
+  .bg-honey { background-color: var(--color-warning) !important; }
+  .border-honey { border-color: var(--color-warning) !important; }
+
+  .text-tomato { color: var(--color-danger) !important; }
+  .bg-tomato { background-color: var(--color-danger) !important; }
+  .border-tomato { border-color: var(--color-danger) !important; }
+
+  /* Custom text helper colors matching guidelines */
+  .text-primary { color: var(--color-text-primary) !important; }
+  .text-secondary { color: var(--color-text-secondary) !important; }
+  .text-muted { color: var(--color-text-muted) !important; }
+}
+
+@layer components {
+  .thin-scrollbar {
+    scrollbar-color: var(--color-border) transparent;
+    scrollbar-width: thin;
+  }
+
+  .thin-scrollbar::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+
+  .thin-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border: 1px solid transparent;
+    border-radius: 999px;
+    background-clip: padding-box;
+  }
+
+  .thin-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Sleek glassmorphism and subtle animations */
+  .premium-card {
+    background: linear-gradient(135deg, rgba(23, 32, 51, 0.4) 0%, rgba(15, 23, 42, 0.6) 100%);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .premium-card:hover {
+    border-color: rgba(34, 211, 238, 0.35);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 12px rgba(34, 211, 238, 0.08);
+    transform: translateY(-2px);
+  }
+}
