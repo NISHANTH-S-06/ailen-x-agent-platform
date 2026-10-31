@@ -1,4 +1,6 @@
-# AGENT ALINE X v3.1
+# AILEN X (AGENT ALINE X v3.1) - Local AI Project Agent
+
+> Windows-only, fully local agent (Ollama). Default workspace paths live in `agent_config.json`; change them to your own folders before running. Tests (`pytest`) assume Windows paths.
 
 **Status:** Release Candidate — P7 Final QA | **Updated:** 2026-07-01
 **Location:** `D:\AGENT_ALINE_X_\`

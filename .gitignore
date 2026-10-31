@@ -1,4 +1,4 @@
-﻿.venv*/
+.venv*/
 venv/
 __pycache__/
 *.pyc
@@ -19,3 +19,4 @@ _codex_api_test_payloads/
 tmp/
 scratch/
 .env
+frontend/dist/
