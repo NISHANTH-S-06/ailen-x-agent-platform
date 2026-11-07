@@ -1,9 +1,10 @@
-# AILEN X (AGENT ALINE X v3.1) - Local AI Project Agent
+# AILEN X (AGENT ALINE X v3.1) — Local AI Project Agent
+
+[![ci](https://github.com/NISHANTH-S-06/ailen-x-agent-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/NISHANTH-S-06/ailen-x-agent-platform/actions/workflows/ci.yml)
 
 > Windows-only, fully local agent (Ollama). Default workspace paths live in `agent_config.json`; change them to your own folders before running. Tests (`pytest`) assume Windows paths.
 
 **Status:** Release Candidate — P7 Final QA | **Updated:** 2026-07-01
-**Location:** `D:\AGENT_ALINE_X_\`
 
 AGENT ALINE X is a fully local, private AI project agent for Windows. It runs
 entirely on your machine via local Ollama models — no cloud, no internet
@@ -21,6 +22,18 @@ required after setup, no data leaves your PC.
 | Memory | Project memory search (embedding + keyword fallback) |
 | Safety | Command planner (safe / caution / blocked classification) |
 | Status | Release status endpoint (`/api/release/status`) |
+
+```mermaid
+flowchart LR
+  UI[React + Vite UI :5173] --> B[FastAPI bridge :8787]
+  B --> R[Model router]
+  R --> O[Local Ollama models]
+  B --> M[Project memory search]
+  B --> P[Command planner]
+  P -->|safe| X[auto-run]
+  P -->|caution| Y[ask for confirmation]
+  P -->|blocked| Z[never runs]
+```
 
 ## Local URLs
 
@@ -42,6 +55,13 @@ required after setup, no data leaves your PC.
   **caution** (requires confirmation), or **blocked** (never runs)
 - Read-only release status endpoint for QA visibility
 
+## Tests
+
+```powershell
+py -3.11 -m pytest -q    # run on Windows: the safety tests assume Windows workspace paths
+```
+CI checks that all Python modules compile and the frontend builds.
+
 ## Required tools
 
 - Python 3.11 (`py -3.11`)
@@ -54,28 +74,28 @@ required after setup, no data leaves your PC.
 ## Start backend
 
 ```powershell
-cd D:\AGENT_ALINE_X_
+cd <path-to-this-repo>
 py -3.11 -m uvicorn backend_bridge:app --host 127.0.0.1 --port 8787 --reload
 ```
 
 ## Start frontend
 
 ```powershell
-cd D:\AGENT_ALINE_X_\frontend
+cd <path-to-this-repo>\frontend
 npm.cmd run dev
 ```
 
 ## Test backend
 
 ```powershell
-cd D:\AGENT_ALINE_X_
+cd <path-to-this-repo>
 py -3.11 -m pytest -q
 ```
 
 ## Build frontend
 
 ```powershell
-cd D:\AGENT_ALINE_X_\frontend
+cd <path-to-this-repo>\frontend
 npm.cmd run build
 ```
 
